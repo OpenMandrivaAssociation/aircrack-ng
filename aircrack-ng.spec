@@ -1,5 +1,5 @@
 %define name    aircrack-ng	
-%define version 0.8
+%define version 0.9
 %define release %mkrel 1
 
 Name:		%{name}
@@ -9,7 +9,7 @@ Summary:    Reliable 802.11 (wireless) sniffer and WEP key cracker
 License:    GPL
 Group:      Networking/Other
 URL:        http://www.aircrack-ng.org/doku.php
-Source:     http://download.aircrack-ng.org/%{name}-%{version}.tar.bz2
+Source:     http://download.aircrack-ng.org/%{name}-%{version}.tar.gz
 BuildRoot:  %{_tmppath}/%{name}-%{version}
 
 %description
