@@ -10,6 +10,7 @@ License:    GPL
 Group:      Networking/Other
 URL:        http://www.aircrack-ng.org/doku.php
 Source:     http://download.aircrack-ng.org/%{name}-%{version}.tar.gz
+BuildRoot:  %{_tmppath}/%{name}-%{version}
 
 %description
 aircrack-ng is a set of tools for auditing wireless networks. It's an 
