@@ -1,5 +1,5 @@
 %define name    aircrack-ng	
-%define version 0.9.2
+%define version 0.9.3
 %define release %mkrel 1
 
 Name:		%{name}
