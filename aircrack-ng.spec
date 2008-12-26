@@ -14,6 +14,7 @@ Patch0:		1085.patch
 Patch1:		1177.patch
 Patch2:		1222.patch
 BuildRequires:	openssl-devel
+BuildRequires:	zlib-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
