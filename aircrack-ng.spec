@@ -10,9 +10,7 @@ License:	GPLv2+
 Group:		Networking/Other
 URL:		http://www.aircrack-ng.org/doku.php
 Source:		http://download.aircrack-ng.org/%{name}-%{version}-rc2.tar.gz
-#Patch0:		1085.patch
-#Patch1:		1177.patch
-#Patch2:		1222.patch
+Patch0:		sha-compile-fix-64bit.patch
 BuildRequires:	openssl-devel
 BuildRequires:	zlib-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}
@@ -27,9 +25,8 @@ etc.).
 
 %prep
 %setup -q -n %{name}-%{version}-rc2
-#%patch0 -p1
-#%patch1 -p1
-#%patch2 -p1
+%patch0 -p0
+
 
 %build
 export CFLAGS="%optflags"
