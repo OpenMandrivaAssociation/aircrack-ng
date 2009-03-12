@@ -1,18 +1,18 @@
 %define name    aircrack-ng	
 %define version 1.0
-%define release %mkrel 0.rc1.1
+%define release %mkrel 0.rc2.1
 
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
 Summary:	Reliable 802.11 (wireless) sniffer and WEP key cracker
-License:	GPL
+License:	GPLv2+
 Group:		Networking/Other
 URL:		http://www.aircrack-ng.org/doku.php
-Source:		http://download.aircrack-ng.org/%{name}-%{version}-rc1.tar.gz
-Patch0:		1085.patch
-Patch1:		1177.patch
-Patch2:		1222.patch
+Source:		http://download.aircrack-ng.org/%{name}-%{version}-rc2.tar.gz
+#Patch0:		1085.patch
+#Patch1:		1177.patch
+#Patch2:		1222.patch
 BuildRequires:	openssl-devel
 BuildRequires:	zlib-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}
@@ -26,10 +26,10 @@ capture files), and some tools to handle capture files (merge, convert,
 etc.).
 
 %prep
-%setup -q -n %{name}-%{version}-rc1
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%setup -q -n %{name}-%{version}-rc2
+#%patch0 -p1
+#%patch1 -p1
+#%patch2 -p1
 
 %build
 export CFLAGS="%optflags"
