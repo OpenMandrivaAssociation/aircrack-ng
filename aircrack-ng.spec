@@ -28,7 +28,7 @@ etc.).
 
 %build
 export CFLAGS="%optflags"
-%make
+make
 
 %install
 %{__rm} -rf %{buildroot}
