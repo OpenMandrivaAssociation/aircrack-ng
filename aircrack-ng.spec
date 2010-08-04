@@ -1,10 +1,6 @@
-%define name    aircrack-ng	
-%define version 1.1
-%define release %mkrel 1
-
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:		aircrack-ng
+Version:	1.1
+Release:	%mkrel 2
 Summary:	Reliable 802.11 (wireless) sniffer and WEP key cracker
 License:	GPLv2+
 Group:		Networking/Other
@@ -23,18 +19,15 @@ capture files), and some tools to handle capture files (merge, convert,
 etc.).
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 
 %build
-export CFLAGS="%optflags"
-make
+export CFLAGS="%{optflags} -O3" LDFLAGS="%{ldflags}"
+%make
 
 %install
 %{__rm} -rf %{buildroot}
-%makeinstall
-
-mkdir %{buildroot}%_mandir/man1
-mv %{buildroot}%_mandir/*.1 %{buildroot}%_mandir/man1/
+%makeinstall mandir=%{_mandir}/man1
 
 %clean
 %{__rm} -rf %{buildroot}
@@ -42,8 +35,6 @@ mv %{buildroot}%_mandir/*.1 %{buildroot}%_mandir/man1/
 %files
 %defattr(-,root,root)
 %doc ChangeLog README AUTHORS INSTALLING LICENSE VERSION 
-%_bindir/*
-%_sbindir/*
-%_mandir/man1/*
-
-
+%{_bindir}/*
+%{_sbindir}/*
+%{_mandir}/man1/*
