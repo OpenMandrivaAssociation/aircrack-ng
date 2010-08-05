@@ -27,12 +27,12 @@ etc.).
 %patch1 -p1 -b .oui_destdir~
 
 %build
-export CFLAGS="%{optflags} -O3" LDFLAGS="%{ldflags}" SQLITE=true
-%make
+export CFLAGS="%{optflags} -O3" LDFLAGS="%{ldflags}" SQLITE=true UNSTABLE=true
+%make datadir=%{_datadir}
 
 %install
 %{__rm} -rf %{buildroot}
-%makeinstall SQLITE=true
+%makeinstall SQLITE=true UNSTABLE=true
 DESTDIR=%{buildroot} sh ./scripts/airodump-ng-oui-update
 
 %clean
