@@ -8,6 +8,7 @@ URL:		http://www.aircrack-ng.org/doku.php
 Source:		http://download.aircrack-ng.org/%{name}-%{version}.tar.gz
 BuildRequires:	openssl-devel
 BuildRequires:	zlib-devel
+BuildRequires:	sqlite3-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
@@ -22,7 +23,7 @@ etc.).
 %setup -q
 
 %build
-export CFLAGS="%{optflags} -O3" LDFLAGS="%{ldflags}"
+export CFLAGS="%{optflags} -O3" LDFLAGS="%{ldflags}" SQLITE=true
 %make
 
 %install
