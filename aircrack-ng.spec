@@ -7,6 +7,7 @@ Group:		Networking/Other
 URL:		http://www.aircrack-ng.org/doku.php
 Source0:	http://download.aircrack-ng.org/%{name}-%{version}.tar.gz
 Patch0:		aircrack-ng-1.1-makefile-fixes.patch
+Patch1:		aircrack-ng-1.1-airodump-oui-destdir.patch
 BuildRequires:	openssl-devel
 BuildRequires:	zlib-devel
 BuildRequires:	sqlite3-devel
@@ -23,6 +24,7 @@ etc.).
 %prep
 %setup -q
 %patch0 -p1 -b .make_makeup~
+%patch1 -p1 -b .oui_destdir~
 
 %build
 export CFLAGS="%{optflags} -O3" LDFLAGS="%{ldflags}" SQLITE=true
@@ -30,7 +32,8 @@ export CFLAGS="%{optflags} -O3" LDFLAGS="%{ldflags}" SQLITE=true
 
 %install
 %{__rm} -rf %{buildroot}
-%makeinstall
+%makeinstall SQLITE=true
+DESTDIR=%{buildroot} sh ./scripts/airodump-ng-oui-update
 
 %clean
 %{__rm} -rf %{buildroot}
@@ -41,3 +44,5 @@ export CFLAGS="%{optflags} -O3" LDFLAGS="%{ldflags}" SQLITE=true
 %{_bindir}/*
 %{_sbindir}/*
 %{_mandir}/man1/*.1*
+%dir %{_datadir}/aircrack-ng
+%{_datadir}/aircrack-ng/airodump-ng-oui.txt
