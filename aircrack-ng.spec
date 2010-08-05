@@ -37,7 +37,7 @@ export CFLAGS="%{optflags} -O3" LDFLAGS="%{ldflags}" SQLITE=true
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog README AUTHORS INSTALLING LICENSE VERSION 
+%doc ChangeLog README AUTHORS VERSION 
 %{_bindir}/*
 %{_sbindir}/*
 %{_mandir}/man1/*.1*
