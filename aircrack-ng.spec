@@ -28,7 +28,7 @@ etc.).
 
 %build
 export CFLAGS="%{optflags} -O3" LDFLAGS="%{ldflags}" SQLITE=true UNSTABLE=true
-%make datadir=%{_datadir}
+%make datadir=%{_datadir} || make datadir=%{_datadir}
 
 %install
 %{__rm} -rf %{buildroot}
