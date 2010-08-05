@@ -5,7 +5,8 @@ Summary:	Reliable 802.11 (wireless) sniffer and WEP key cracker
 License:	GPLv2+
 Group:		Networking/Other
 URL:		http://www.aircrack-ng.org/doku.php
-Source:		http://download.aircrack-ng.org/%{name}-%{version}.tar.gz
+Source0:	http://download.aircrack-ng.org/%{name}-%{version}.tar.gz
+Patch0:		aircrack-ng-1.1-makefile-fixes.patch
 BuildRequires:	openssl-devel
 BuildRequires:	zlib-devel
 BuildRequires:	sqlite3-devel
@@ -21,6 +22,7 @@ etc.).
 
 %prep
 %setup -q
+%patch0 -p1 -b .make_makeup~
 
 %build
 export CFLAGS="%{optflags} -O3" LDFLAGS="%{ldflags}" SQLITE=true
@@ -28,7 +30,7 @@ export CFLAGS="%{optflags} -O3" LDFLAGS="%{ldflags}" SQLITE=true
 
 %install
 %{__rm} -rf %{buildroot}
-%makeinstall mandir=%{_mandir}/man1
+%makeinstall
 
 %clean
 %{__rm} -rf %{buildroot}
@@ -38,4 +40,4 @@ export CFLAGS="%{optflags} -O3" LDFLAGS="%{ldflags}" SQLITE=true
 %doc ChangeLog README AUTHORS INSTALLING LICENSE VERSION 
 %{_bindir}/*
 %{_sbindir}/*
-%{_mandir}/man1/*
+%{_mandir}/man1/*.1*
