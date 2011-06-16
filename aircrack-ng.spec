@@ -1,6 +1,6 @@
 Name:		aircrack-ng
 Version:	1.1
-Release:	%mkrel 2
+Release:	%mkrel 3
 Summary:	Reliable 802.11 (wireless) sniffer and WEP key cracker
 License:	GPLv2+
 Group:		Networking/Other
@@ -11,7 +11,6 @@ Patch1:		aircrack-ng-1.1-airodump-oui-destdir.patch
 BuildRequires:	openssl-devel
 BuildRequires:	zlib-devel
 BuildRequires:	sqlite3-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 aircrack-ng is a set of tools for auditing wireless networks. It's an 
@@ -27,12 +26,13 @@ etc.).
 %patch1 -p1 -b .oui_destdir~
 
 %build
-export CFLAGS="%{optflags} -O3" LDFLAGS="%{ldflags}" SQLITE=true UNSTABLE=true
-%make datadir=%{_datadir} || make datadir=%{_datadir}
+export CFLAGS="%{optflags} -O3"
+export LDFLAGS="%{ldflags}"
+%make datadir=%{_datadir} unstable=true sqlite=true
 
 %install
 %{__rm} -rf %{buildroot}
-%makeinstall SQLITE=true UNSTABLE=true
+%makeinstall unstable=true sqlite=true
 DESTDIR=%{buildroot} sh ./scripts/airodump-ng-oui-update
 
 %clean
