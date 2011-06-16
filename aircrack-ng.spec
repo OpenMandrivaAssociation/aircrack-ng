@@ -33,10 +33,15 @@ export LDFLAGS="%{ldflags}"
 %install
 %{__rm} -rf %{buildroot}
 %makeinstall unstable=true sqlite=true
-DESTDIR=%{buildroot} sh ./scripts/airodump-ng-oui-update
+
+mkdir -p %{buildroot}%{_datadir}/%{name}
+touch %{buildroot}%{_datadir}/%{name}/airodump-ng-oui.txt
 
 %clean
 %{__rm} -rf %{buildroot}
+
+%post 
+%{_sbindir}/airodump-ng-oui-update
 
 %files
 %defattr(-,root,root)
@@ -45,4 +50,4 @@ DESTDIR=%{buildroot} sh ./scripts/airodump-ng-oui-update
 %{_sbindir}/*
 %{_mandir}/man1/*.1*
 %dir %{_datadir}/aircrack-ng
-%{_datadir}/aircrack-ng/airodump-ng-oui.txt
+%ghost %{_datadir}/aircrack-ng/airodump-ng-oui.txt
