@@ -1,13 +1,15 @@
+%define	svnrev	r1926
+
 Name:		aircrack-ng
 Version:	1.1
-Release:	%mkrel 3
+Release:	4.%{svnrev}.1
 Summary:	Reliable 802.11 (wireless) sniffer and WEP key cracker
 License:	GPLv2+
 Group:		Networking/Other
 URL:		http://www.aircrack-ng.org/doku.php
-Source0:	http://download.aircrack-ng.org/%{name}-%{version}.tar.gz
-Patch0:		aircrack-ng-1.1-makefile-fixes.patch
-Patch1:		aircrack-ng-1.1-airodump-oui-destdir.patch
+Source0:	http://download.aircrack-ng.org/%{name}-%{version}.%{svnrev}.tar.xz
+Patch0:		aircrack-ng-1.1.r1926-makefile-fixes.patch
+Patch1:		aircrack-ng-1.1.r1926-airodump-oui-destdir.patch
 BuildRequires:	openssl-devel
 BuildRequires:	zlib-devel
 BuildRequires:	sqlite3-devel
