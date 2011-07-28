@@ -2,12 +2,13 @@
 
 Name:		aircrack-ng
 Version:	1.1
-Release:	4.%{svnrev}.1
+Release:	4.%{svnrev}.2
 Summary:	Reliable 802.11 (wireless) sniffer and WEP key cracker
 License:	GPLv2+
 Group:		Networking/Other
 URL:		http://www.aircrack-ng.org/doku.php
 Source0:	http://download.aircrack-ng.org/%{name}-%{version}.%{svnrev}.tar.xz
+Source1:	http://aircrack-ng.org/doku.php?id=simple_wep_crack
 Patch0:		aircrack-ng-1.1.r1926-makefile-fixes.patch
 Patch1:		aircrack-ng-1.1.r1926-airodump-oui-destdir.patch
 BuildRequires:	openssl-devel
@@ -26,6 +27,7 @@ etc.).
 %setup -q
 %patch0 -p1 -b .make_makeup~
 %patch1 -p1 -b .oui_destdir~
+cp %{SOURCE1} wep-tutorial.html
 
 %build
 export CFLAGS="%{optflags} -O3"
@@ -47,7 +49,7 @@ touch %{buildroot}%{_datadir}/%{name}/airodump-ng-oui.txt
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog README AUTHORS VERSION 
+%doc ChangeLog README AUTHORS VERSION wep-tutorial.html
 %{_bindir}/*
 %{_sbindir}/*
 %{_mandir}/man1/*.1*
