@@ -1,0 +1,32 @@
+--- aircrack-ng-1.1/scripts/airodump-ng-oui-update.oui_destdir~	2011-07-07 23:42:23.000000000 +0200
++++ aircrack-ng-1.1/scripts/airodump-ng-oui-update	2011-07-07 23:58:40.641090108 +0200
+@@ -4,7 +4,7 @@ CURL=`which curl 2>/dev/null`
+ WGET=`which wget 2>/dev/null`
+ OUI_DOWNLOAD_URL="http://standards.ieee.org/develop/regauth/oui/oui.txt"
+ 
+-OUI_PATH="/usr/local/etc/aircrack-ng"
++OUI_PATH="/usr/share/aircrack-ng"
+ AIRODUMP_NG_OUI="${OUI_PATH}/airodump-ng-oui.txt"
+ OUI_IEEE="${OUI_PATH}/oui.txt"
+ USERID=""
+--- aircrack-ng-1.1/src/airodump-ng.h.oui_destdir~	2011-07-07 23:42:20.000000000 +0200
++++ aircrack-ng-1.1/src/airodump-ng.h	2011-07-08 00:00:25.477708700 +0200
+@@ -112,7 +112,7 @@ static uchar ZERO[32] =
+ "\x00\x00\x00\x00\x00\x00\x00\x00";
+ 
+ #define OUI_PATH0 "/etc/aircrack-ng/airodump-ng-oui.txt"
+-#define OUI_PATH1 "/usr/local/etc/aircrack-ng/airodump-ng-oui.txt"
++#define OUI_PATH1 "/usr/share/aircrack-ng/airodump-ng-oui.txt"
+ #define MIN_RAM_SIZE_LOAD_OUI_RAM 32768
+ 
+ int read_pkts=0;
+--- aircrack-ng-1.1/src/Makefile.oui_destdir~	2011-07-07 23:42:20.000000000 +0200
++++ aircrack-ng-1.1/src/Makefile	2011-07-07 23:57:40.152156208 +0200
+@@ -4,6 +4,7 @@ include $(AC_ROOT)/common.mak
+ 
+ TEST_DIR	= $(AC_ROOT)/test
+ 
++CPPFLAGS	+= -DOUI_PATH='"$(datadir)/aircrack-ng/airodump-ng-oui.txt"'
+ CFLAGS		+= -Iinclude
+ 
+ iCC             = $(shell find /opt/intel/cc/*/bin/icc)
