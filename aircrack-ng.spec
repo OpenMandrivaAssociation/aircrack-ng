@@ -1,14 +1,14 @@
 Name:		aircrack-ng
 Version:	1.5.2
-Release:	1
+Release:	2
 Summary:	Reliable 802.11 (wireless) sniffer and WEP key cracker
 License:	GPLv2+
 Group:		Networking/Other
 URL:		http://www.aircrack-ng.org/doku.php
 Source0:	http://download.aircrack-ng.org/%{name}-%{version}.tar.gz
-BuildRequires:	openssl-devel
-BuildRequires:	zlib-devel
-BuildRequires:	sqlite3-devel
+BuildRequires:	pkgconfig(openssl)
+BuildRequires:	pkgconfig(zlib)
+BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:  ethtool
 BuildRequires:	pkgconfig(libnl-3.0)
 
@@ -21,17 +21,17 @@ capture files), and some tools to handle capture files (merge, convert,
 etc.).
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} -O3"
 export LDFLAGS="%{ldflags}"
 sh autogen.sh
 %configure
-%make datadir=%{_datadir} unstable=true sqlite=true
+%make_build datadir=%{_datadir} unstable=true sqlite=true
 
 %install
-%makeinstall
+%make_install
 mkdir -p %{buildroot}%{_datadir}/%{name}
 
 %files
