@@ -1,12 +1,11 @@
 Name:		aircrack-ng
-Version:	1.6
+Version:	1.7
 Release:	1
 Summary:	Reliable 802.11 (wireless) sniffer and WEP key cracker
 License:	GPLv2+
 Group:		Networking/Other
 URL:		http://www.aircrack-ng.org/doku.php
 Source0:	http://download.aircrack-ng.org/%{name}-%{version}.tar.gz
-Patch0:		aircrack-ng-1.6-fix-duplicate-symbols.patch
 BuildRequires:	pkgconfig(openssl)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	pkgconfig(sqlite3)
@@ -41,10 +40,9 @@ mkdir -p %{buildroot}%{_datadir}/%{name}
 rm -rf %{buildroot}%{_includedir}
 
 %files
-%doc ChangeLog README AUTHORS VERSION 
+%doc ChangeLog README AUTHORS
 %{_libdir}/libaircrack*.so
 %{_bindir}/*
-%{_sbindir}/*
 %{_mandir}/man1/*.1*
 %{_mandir}/man8/*.8*
 %dir %{_datadir}/aircrack-ng
