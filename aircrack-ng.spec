@@ -4,7 +4,7 @@ Release:	1
 Summary:	Reliable 802.11 (wireless) sniffer and WEP key cracker
 License:	GPLv2+
 Group:		Networking/Other
-URL:		http://www.aircrack-ng.org/doku.php
+URL:		https://www.aircrack-ng.org/doku.php
 Source0:	http://download.aircrack-ng.org/%{name}-%{version}.tar.gz
 BuildRequires:	pkgconfig(openssl)
 BuildRequires:	pkgconfig(zlib)
