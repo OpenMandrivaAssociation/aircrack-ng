@@ -1,6 +1,6 @@
 Name:		aircrack-ng
 Version:	1.7
-Release:	1
+Release:	2
 Summary:	Reliable 802.11 (wireless) sniffer and WEP key cracker
 License:	GPLv2+
 Group:		Networking/Other
